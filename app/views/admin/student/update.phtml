@@ -1,53 +1,93 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>联系我们</title>
-    <link rel="stylesheet" href="/admin/css/style.css" type="text/css" media="all">
-</head>
-<body>
-<div id="append"></div>
-<div class="container">
-    <h3>修改学生</h3>
-    <div class="mainbox">
-        <form action="/admin/student/update" method="post">
-            <table style="width:700px;">
-                <td class="login">
-                    <?php foreach ($student as $arr) {?>
-                    <table class="login_tab">
-                        <tr>
-                            <td>学生姓名:</td>
-                            <td><input type="text" id="name" tabindex="1" class="txt" name="name" value=<?php echo $arr['name']; ?> /></td>
-                        </tr>
-                        <tr>
-                            <td><input type="hidden" id="name" tabindex="1" class="txt" name="id" value=<?php echo $arr['id']; ?> /></td>
-                        </tr>
-                        <tr>
-                            <td>学生性别:</td>
-                            <td><input type="text"  id="mobile" tabindex="2" class="txt" name="sex" value=<?php echo $arr['sex']; ?> /></td>
-                        </tr>
-                        <tr>
-                            <td>qq:</td>
-                            <td><input type="text"  id="phone" tabindex="2" class="txt" name="qq" value=  <?php echo $arr['qq']; ?>	 /></td>
-                        </tr>
-                        <tr>
-                            <td>电话:</td>
-                            <td><input type="text"  id="fax" tabindex="2" class="txt" name="phone" value=<?php echo $arr['phone']; ?> /></td>
-                        </tr>
+<?php $this->partial('common/top');?>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/admin/css/bootstrap.min.css">
 
-                    </table>
-                    <?php }
-?>
-                </td>
-                <tbody>
-                <tr>
-                    <td><input value="提 交" class="btn" type="submit"></td>
-                </tr>
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="/admin/css/bootstrap-theme.min.css">
 
-                </tbody>
-            </table>
-        </form>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/admin/js/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/admin/js/bootstrap.min.js"></script>
+<div class="header bb">
+    <!-- 导航栏 -->
+    <div class="menu" id="J-menu">
+        <!-- 顶栏 -->
+        <div class="wrapper clearfix top">
+            <ul class="quit clearfix">
+                <li style="border-left:0px"><a href="/admin/student/index"  id="search" style="color:#29a2da">返回学校列表</a></li>
+            </ul>
+        </div>
+        <div class="wrapper clearfix">
+            <a href="/admin/student/index" class="logo fl">
+                <img src="/admin/images/logo-new.png" alt="logo">
+                <span style="color: #29a2da;font-weight: 900;">学生管理系统</span>
+            </a>
+            <ol class="clearfix fl" id="J-menu-item">
+            </ol>
+            <!--                <a href="--><!--" class="icon icon-notice-bell">-->
+        </div>
     </div>
 </div>
-</body>
-</html>
+<div id="append"></div>
+<div class="container">
+    <h3>修改学生 <small>update student</small></h3>
+    <div class="mainbox">
+
+        <form class="form-horizontal" role="form" action="/admin/student/update" method="post">
+            <?php foreach ($student as $arr) {
+    ?>
+            <div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">学生姓名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="name" name="name" value="<?php echo $arr['name']; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="hidden" class="form-control" id="inputEmail3" placeholder="name" name="id" value="<?php echo $arr['id']; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">学生性别</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="sex" name="sex" value="<?php echo $arr['sex']; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">学生qq</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="qq" name="qq" value=" <?php echo $arr['qq']; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">学生电话</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="phone" name="phone" value="<?php echo $arr['phone']; ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Sign in</button>
+                    </div>
+                </div>
+            </div>
+            <?php }
+?>
+        </form>
+
+    </div>
+</div>
+
+<?php $this->partial('common/footer');?>

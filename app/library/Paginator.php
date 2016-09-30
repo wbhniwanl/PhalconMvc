@@ -50,17 +50,17 @@ class Paginator
     //获取地址
     private function setUrl()
     {
-        $url = $_SERVER["REQUEST_URI"];
+        $url  = $_SERVER["REQUEST_URI"];
         $_par = parse_url($url);
         if (isset($_par['query'])) {
             parse_str($_par['query'], $_query);
             unset($_query['page']);
-            if(empty($_query)){
+            if (empty($_query)) {
                 $url = $_par['path'] . '?' . http_build_query($_query);
-            }else{
-                $url = $_par['path'] . '?' . http_build_query($_query).'&';
+            } else {
+                $url = $_par['path'] . '?' . http_build_query($_query) . '&';
             }
-        }else{
+        } else {
             $url = $_par['path'] . '?';
         }
         return $url;
@@ -70,38 +70,38 @@ class Paginator
      */
     private function pageList()
     {
-        $page = $this->page;
-        $total = $this->pagenum;
+        $page      = $this->page;
+        $total     = $this->pagenum;
         $_pagelist = '';
-        if($total <= 10){
-            for ($i = 1;$i <= $total;$i++){
-                if($i == $page){
+        if ($total <= 10) {
+            for ($i = 1; $i <= $total; $i++) {
+                if ($i == $page) {
                     $_pagelist .= '<li class="active"><a href="">' . $page . '</a></li>';
-                }else{
+                } else {
                     $_pagelist .= '<li><a href="' . $this->url . 'page=' . $i . '">' . $i . '</a></li>';
                 }
             }
-        }elseif($page-1 > 5 && $total-$page > 4 ){
-            for ($i = $page-5;$i <= $page+4 ;$i++){
-                if($i == $page){
+        } elseif ($page - 1 > 5 && $total - $page > 4) {
+            for ($i = $page - 5; $i <= $page + 4; $i++) {
+                if ($i == $page) {
                     $_pagelist .= '<li class="active"><a href="">' . $page . '</a></li>';
-                }else{
+                } else {
                     $_pagelist .= '<li><a href="' . $this->url . 'page=' . $i . '">' . $i . '</a></li>';
                 }
             }
-        }elseif ($page-1 <= 5){
-            for ($i = 1;$i <= 10 ;$i++){
-                if($i == $page){
+        } elseif ($page - 1 <= 5) {
+            for ($i = 1; $i <= 10; $i++) {
+                if ($i == $page) {
                     $_pagelist .= '<li class="active"><a href="">' . $page . '</a></li>';
-                }else{
+                } else {
                     $_pagelist .= '<li><a href="' . $this->url . 'page=' . $i . '">' . $i . '</a></li>';
                 }
             }
-        }else{
-            for ($i = $total-9;$i <= $total ;$i++){
-                if($i == $page){
+        } else {
+            for ($i = $total - 9; $i <= $total; $i++) {
+                if ($i == $page) {
                     $_pagelist .= '<li class="active"><a href="">' . $page . '</a></li>';
-                }else{
+                } else {
                     $_pagelist .= '<li><a href="' . $this->url . 'page=' . $i . '">' . $i . '</a></li>';
                 }
             }
@@ -112,12 +112,12 @@ class Paginator
     //首页和上一页
     private function first()
     {
-        $page = $this->page;
+        $page      = $this->page;
         $_pagelist = '';
-        if($page > 1){
-            $prePage = $page -1;
+        if ($page > 1) {
+            $prePage = $page - 1;
             $_pagelist .= '<li class="previous"><a href="' . $this->url . 'page=1"><i class="icon icon-double-angle-left"></i></a></li>';
-            $_pagelist .= '<li class="previous"><a href="' . $this->url . 'page='. $prePage .'">上一页</a></li>';
+            $_pagelist .= '<li class="previous"><a href="' . $this->url . 'page=' . $prePage . '">上一页</a></li>';
         }
         return $_pagelist;
     }
@@ -125,13 +125,13 @@ class Paginator
     //下一页和尾页
     private function last()
     {
-        $page = $this->page;
-        $total = $this->pagenum;
-        $nextPage = $page+1;
+        $page      = $this->page;
+        $total     = $this->pagenum;
+        $nextPage  = $page + 1;
         $_pagelist = '';
-        if($page < $total){
-            $_pagelist .= '<li class="next"><a href="' . $this->url . 'page='. $nextPage .'">下一页</a></li>';
-            $_pagelist .= '<li class="previous"><a href="' . $this->url . 'page='.$total.'"><i class="icon icon-double-angle-right"></i></a></li>';
+        if ($page < $total) {
+            $_pagelist .= '<li class="next"><a href="' . $this->url . 'page=' . $nextPage . '">下一页</a></li>';
+            $_pagelist .= '<li class="previous"><a href="' . $this->url . 'page=' . $total . '"><i class="icon icon-double-angle-right"></i></a></li>';
         }
         return $_pagelist;
     }

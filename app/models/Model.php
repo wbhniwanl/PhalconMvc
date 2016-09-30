@@ -61,7 +61,7 @@ class Model extends Injectable
 
     public function has($where)
     {
-        return $this->db->has($this->getSource(),$where);
+        return $this->db->has($this->getSource(), $where);
     }
     /**
      * 取指定列最大值
@@ -80,5 +80,9 @@ class Model extends Injectable
     public function min($column = '', $where = [])
     {
         return $this->db->min($this->getSource(), $column, $where);
+    }
+    public function log()
+    {
+        return $this->db->log();
     }
 }

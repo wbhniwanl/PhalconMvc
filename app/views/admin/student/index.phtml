@@ -1,49 +1,56 @@
-<!DOCTYPE html>
-<html lang="zh-hans"><head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link rel="stylesheet" type="text/css" href="">
-    <title></title>
-    <link rel="icon" href="http://help-t.yaochufa.com/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/admin/css/common.css">
-    <link rel="stylesheet" href="/admin/css/calendar.css">
-    <link rel="stylesheet" href="/admin/css/dialog.css">
-    <script src="/admin/js/jquery.js"></script>
-    <style>
-        button.btn-middle {vertical-align: middle;}
-        .calendar-wrapper{display: inline-block;*display:inline;zoom:1;}
-        .calendar-wrapper div{vertical-align: middle;}
+<?php $this->partial('common/top');?>
+    <div class="header bb">
+        <!-- 导航栏 -->
+        <div class="menu" id="J-menu">
+            <!-- 顶栏 -->
+            <div class="wrapper clearfix top">
+                <ul class="quit clearfix">
+                    <li style="border-left:0px"><a href="/admin/student/add"  id="search" style="color:#29a2da">添加学生</a></li>
+                    <li style="border-left:0px"><a style="color:#29a2da" href="">列表查询</a></li>
+                </ul>
+            </div>
+            <div class="wrapper clearfix">
+                <a href="/admin/student/index" class="logo fl">
+                    <img src="/admin/images/logo-new.png" alt="logo">
+                    <span style="color: #29a2da;font-weight: 900;">学生管理系统</span>
+                </a>
+                <ol class="clearfix fl" id="J-menu-item">
+                    <li class="active" data-index="3">
+                        <a href="/admin/student/index" class="first" >学生列表<i class="icon-css icon-css-tb"></i></a>
+                        <!--<i class="icon icon-submenu submenu3"></i>-->
+                        <div>
+                            <a href="">信息院</a>
+                            <a href="">化院</a>
+                            <a href="">物电学院</a>
+                            <a href="">外国语学院</a>
+                            <a href="">文学院</a>
+                            <a href="">体育学院</a>
+                            <a href="">经济学院</a>
+                        </div>
+                    </li>
+                    <li data-index="2">
+                        <a href="/admin/course/index" class="first">课程列表<i class="icon-css icon-css-tb"></i></a>
+                        <!--<i class="icon icon-submenu submenu2"></i>-->
+                        <div>
+                            <a href="http://help-t.yaochufa.com/ycfad2014/document/index">专业课</a>
+                            <a href="http://help-t.yaochufa.com/ycfad2014/document/category">选修课</a>
+                        </div>
+                    </li>
+                    <li data-index="2">
+                        <a href="/admin/choice/index" class="first">选课列表<i class="icon-css icon-css-tb"></i></a>
+                        <!--<i class="icon icon-submenu submenu2"></i>-->
+                        <div>
+                            <a href="http://help-t.yaochufa.com/ycfad2014/user/userinfo">专业课</a>
+                            <a href="http://help-t.yaochufa.com/ycfad2014/ordermanger/myorder">选修课</a>
+                        </div>
+                    </li>
 
-    </style>
-</head>
-<body>
-<!--[if lt IE 8]>
-<div class="browsehappy">为了正常获得最好的浏览体验和兼容性, 请 <a href="http://browsehappy.com/">升级或更换你的浏览器</a> 推荐Google Chrome.</div>
-<![endif]-->
-<div class="header bb">
-    <!-- 导航栏 -->
-    <div class="menu" id="J-menu">
-        <!-- 顶栏 -->
-        <div class="wrapper clearfix top">
-            <ul class="quit clearfix">
-                <li style="border-left:0px"><a href="/admin/student/add"  id="search" style="color:#29a2da">添加学生</a></li>
-                <li style="border-left:0px"><a style="color:#29a2da" href="http://help-t.yaochufa.com/ycfad2014/apply/orderList">列表查询</a></li>
-            </ul>
-        </div>
-        <div class="wrapper clearfix">
-            <a href="http://help-t.yaochufa.com/" class="logo fl">
-                <img src="/admin/images/logo-new.png" alt="logo">
-                <span>学生管理系统</span>
-            </a>
-            <ol class="clearfix fl" id="J-menu-item">
-            </ol>
-            <!--                <a href="--><!--" class="icon icon-notice-bell">-->
+                </ol>
+                <!--                <a href="--><!--" class="icon icon-notice-bell">-->
 
+            </div>
         </div>
     </div>
-</div>
 <!-- 主体 -->
 <div class="container">
     <div class="wrapper">
@@ -51,30 +58,15 @@
         <!-- 小面包屑导航 -->
         <!-- 主内容 -->
         <div class="cloum mb0 notice">
-            <!--				-->                <!-- 搜索框 -->
-            <form method="get" class="search-box2 clearfix" id="J-search" action="">
-                <!--					-->
-                <!--					-->					<label for="reportPerson">学生姓名：</label>
-                <input style="width:200px;" name="reportPerson" id="reportPerson" type="text">
-                <label for="orderStatus">状态：</label>
-                <select id="status" name="orderStatus" class="form-control">
-                    <option selected="selected" value="-1">全部</option>
-                    <option value="0">语文</option>
-                    <option value="1">软件</option>
-                    <option value="2">测试</option>
-                </select>
-                <input name="openTimeSearch" value="1" id="isTimeSearch" type="hidden">
-                <button style="margin-bottom: 4px" class="btn btn-default btn-middle verti-middle-btn" id="no-time-btn">搜索</button>
-                <br>
-                <span style="margin-left: 570px"></span>
-                <label for="orderStatus">填写日期：</label>
-                <div class="calendar-wrapper">
-                    <div style="position: relative; display: inline-block; width: 160px; height: 30px;"><input style="position: absolute;" id="J-calendar" class="calendar" readonly="readonly" name="day_from" value="2016-09-12" type="text"><span class="date-info">(周一)</span></div>
-                    -
-                    <div style="position: relative; display: inline-block; width: 160px; height: 30px;"><input style="position: absolute;" id="J-calendar2" class="calendar2" readonly="readonly" name="day_to" value="2016-09-12" type="text"><span class="date-info">(周一)</span></div>
-                </div>
-                <button class="btn btn-default btn-middle verti-middle-btn" id="">含日期搜索</button>
 
+            <!--				-->                <!-- 搜索框 -->
+            <form method="get" class="search-box2 clearfix" id="J-search" action="/admin/student/index">
+                <!-- 搜索框 -->
+                <label for="reportPerson">学生姓名：</label>
+                <input style="width:200px;" name="reportPerson" id="reportPerson" value="" type="text">
+                <input name="openTimeSearch" value="1" id="isTimeSearch" type="hidden">
+                <button type="submit"name="submit" class="btn btn-default btn-middle  verti-middle-btn" > 搜索</button> <br>
+                <span style="margin-left: 570px"></span>
             </form>
             <!--				-->                <!-- 通知列表 -->
             <div class="notice-list" id="J-notice-list">
@@ -82,19 +74,20 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th nowrap="nowrap"><input name="chkall" id="chkall" class="checkbox" type="checkbox"><label for="chkall">删除</label></th>
+                        <th class="dealPerson">删除</th>
                         <th class="dealPerson">学生姓名</th>
                         <th class="reportTime">性别</th>
                         <th class="orderId">qq</th>
                         <th class="orderTitle" style="width: 24%">电话</th>
                         <th class="dealType">添加时间</th>
-                        <th class="operate">操作</th>
+                        <th class="operate">修改操作</th>
+                        <th class="operate">选课操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <!--合并页面-->
                     <?php foreach ($student as $arr) {?>
-                    <tr data-link="/ycfad2014/Apply/orderDetail?orderTableId=1779">
+                    <tr data-link="">
                         <td width="80"><input name="arr[]" value="<?php echo $arr['id']; ?>" class="checkbox" type="checkbox"></td>
                         <td class="id"><?php echo $arr['name']; ?></td>
                         <td class="reportTime"><?php echo $arr['sex']; ?></td>
@@ -104,6 +97,7 @@
                         <td class="dealType">
                             <?php echo date("Y-m-d", $arr['time']); ?>							</td>
                         <td class="operate"> <a href="/admin/student/update?id=<?php echo $arr['id']; ?>">修改</a></td>
+                        <td class="operate"> <a href="/admin/detail/index?id=<?php echo $arr['id']; ?>">查看选课</a></td>
                     </tr>
                     <?php }
 ?>
@@ -126,50 +120,4 @@
         </div>
     </div>
 </div>
-<!-- 公用底部 -->
-<div class="footer bt">
-    <!--        <ul class="phone">-->
-    <!--            <li class="first">订单咨询：020-61788369 / 020-61788370</li>-->
-    <!--            <li>财务对账：020-22103972</li>-->
-    <!--            <li>技术热线：020-85603622</li>-->
-    <!--        </ul>-->
-    <p class="copyright">中华人民共和国增值电信业务经营许可证编号：粤B2-20130613<br>旅行社业务经营许可证编号：L-GD01685<br>2016 © 广州酷旅旅行社有限公司 粤ICP备11008339号</p>
-</div>
-
-<script src="%E8%A6%81%E5%87%BA%E5%8F%91-IT%E6%9C%8D%E5%8A%A1%E5%8F%B0_files/dialog.js"></script>
-<script src="%E8%A6%81%E5%87%BA%E5%8F%91-IT%E6%9C%8D%E5%8A%A1%E5%8F%B0_files/calendar.js"></script>
-<script src="%E8%A6%81%E5%87%BA%E5%8F%91-IT%E6%9C%8D%E5%8A%A1%E5%8F%B0_files/common.js"></script>
-<script src="%E8%A6%81%E5%87%BA%E5%8F%91-IT%E6%9C%8D%E5%8A%A1%E5%8F%B0_files/tingyun-rum.js"></script>
-<script src="%E8%A6%81%E5%87%BA%E5%8F%91-IT%E6%9C%8D%E5%8A%A1%E5%8F%B0_files/notice.js"></script>
-<script type="text/javascript">
-    ///**
-    // * 提交搜索表单
-    // * <input type="text" />的input必须有name属性，form才能成功提交。
-    // */
-    //function submitForm ( ) {
-    //	var keyWords = $("#keyWords").val();
-    //	if ( !keyWords.length ) {
-    //		alert ( "请输入公告标题、内容" );
-    //		return false;
-    //	} else {
-    //		document.getElementById("searchForm").submit();
-    //	}
-    //}
-
-    $('#J-calendar').calendar({
-        minDate : "all",
-        setTime : $('#J-calendar').val(),
-    });
-    $('#J-calendar2').calendar({
-        minDate : "all",
-        setTime : $('#J-calendar2').val(),
-    });
-    $(function(){
-        $('#no-time-btn').on('click',function(){
-            $('#isTimeSearch').val(0);
-            return true;
-        })
-    })
-</script><div style="display: none; position: absolute;" id="C_1473669249327"><div class="calendar"><span class="cal-prev">prev</span><span class="cal-next">next</span><div class="cal-container"><dl><dt class="date">2016年9月</dt><dt><strong>日</strong></dt><dt>一</dt><dt>二</dt><dt>三</dt><dt>四</dt><dt>五</dt><dt><strong>六</strong></dt><dd><a class="disabled">&nbsp;</a><a class="disabled">&nbsp;</a><a class="disabled">&nbsp;</a><a class="disabled">&nbsp;</a><a href="javascript:;">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a><a href="javascript:;">4</a><a href="javascript:;">5</a><a href="javascript:;">6</a><a href="javascript:;">7</a><a href="javascript:;">8</a><a href="javascript:;">9</a><a href="javascript:;">10</a><a href="javascript:;">11</a><a href="javascript:;">12</a><a href="javascript:;">13</a><a href="javascript:;">14</a><a href="javascript:;">15</a><a href="javascript:;">16</a><a href="javascript:;">17</a><a href="javascript:;">18</a><a href="javascript:;">19</a><a href="javascript:;">20</a><a href="javascript:;">21</a><a href="javascript:;">22</a><a href="javascript:;">23</a><a href="javascript:;">24</a><a href="javascript:;">25</a><a href="javascript:;">26</a><a href="javascript:;">27</a><a href="javascript:;">28</a><a href="javascript:;">29</a><a href="javascript:;">30</a></dd></dl></div></div></div><div style="display: none; position: absolute;" id="C_1473669249333"><div class="calendar"><span class="cal-prev">prev</span><span class="cal-next">next</span><div class="cal-container"><dl><dt class="date">2016年9月</dt><dt><strong>日</strong></dt><dt>一</dt><dt>二</dt><dt>三</dt><dt>四</dt><dt>五</dt><dt><strong>六</strong></dt><dd><a class="disabled">&nbsp;</a><a class="disabled">&nbsp;</a><a class="disabled">&nbsp;</a><a class="disabled">&nbsp;</a><a href="javascript:;">1</a><a href="javascript:;">2</a><a href="javascript:;">3</a><a href="javascript:;">4</a><a href="javascript:;">5</a><a href="javascript:;">6</a><a href="javascript:;">7</a><a href="javascript:;">8</a><a href="javascript:;">9</a><a href="javascript:;">10</a><a href="javascript:;">11</a><a href="javascript:;">12</a><a href="javascript:;">13</a><a href="javascript:;">14</a><a href="javascript:;">15</a><a href="javascript:;">16</a><a href="javascript:;">17</a><a href="javascript:;">18</a><a href="javascript:;">19</a><a href="javascript:;">20</a><a href="javascript:;">21</a><a href="javascript:;">22</a><a href="javascript:;">23</a><a href="javascript:;">24</a><a href="javascript:;">25</a><a href="javascript:;">26</a><a href="javascript:;">27</a><a href="javascript:;">28</a><a href="javascript:;">29</a><a href="javascript:;">30</a></dd></dl></div></div></div>
-
-</body></html>
+<?php $this->partial('common/footer');?>

@@ -152,7 +152,7 @@ input.calendar,input.calendar2 { color: #2f2f2f; width: 142px; clear: initial; o
 select { height: 30px; line-height: 30px; padding: 0 4px; font-size: 14px; color: #555; background-color: #fff; background-image: none; border: 1px solid #bcc1ca; border-radius: 2px; }
 
 /* 分栏 */
-.container { padding: 24px 0 40px; background: #f8f9fb; overflow: hidden; zoom: 1; }
+.container { padding: 24px 0 40px; background: #F0F8FF; overflow: hidden; zoom: 1; }
 .wrapper { width: 1200px; margin: 0 auto; position: relative; }
 .content { width: 876px; }
 .sidebar { width: 300px; }
@@ -213,7 +213,7 @@ select { height: 30px; line-height: 30px; padding: 0 4px; font-size: 14px; color
 
 
 /* 栏目 */
-.cloum { border: 1px solid #d9dee6; position: relative; padding: 10px 15px; background: #fff; margin-bottom: 24px; }
+.cloum { border: 1px solid #d9dee6; position: relative; padding: 10px 15px; background:#FAF0E6; margin-bottom: 24px; }
 .cloum .cloum-title { overflow: hidden; zoom: 1; margin-bottom: 10px; position: relative; }
 .cloum .cloum-title em { color: #787878; }
 .cloum .cloum-title h3 { font-weight: bold; float: left; }
