@@ -1,0 +1,63 @@
+<?php $this->partial('common/top');?>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="/admin/css/bootstrap-theme.min.css">
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/admin/js/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/admin/js/bootstrap.min.js"></script>
+<div class="header bb">
+    <!-- 导航栏 -->
+    <div class="menu" id="J-menu">
+        <!-- 顶栏 -->
+        <div class="wrapper clearfix top">
+            <ul class="quit clearfix">
+                <li style="border-left:0px"><a href="/admin/choice/index"  id="search" style="color:#29a2da">返回选课列表</a></li>
+            </ul>
+        </div>
+        <div class="wrapper clearfix">
+            <a href="/admin/student/index" class="logo fl">
+                <img src="/admin/images/logo-new.png" alt="logo">
+                <span style="color: #29a2da;font-weight: 900;">学生管理系统</span>
+            </a>
+            <ol class="clearfix fl" id="J-menu-item">
+
+            </ol>
+            <!--                <a href="--><!--" class="icon icon-notice-bell">-->
+
+        </div>
+    </div>
+</div>
+<div id="append"></div>
+<div class="container">
+    <h3>学生选课 <small>student choice course</small></h3>
+    <div class="mainbox">
+        <?php foreach ($name as $arr1) {
+    ?>
+        <form action="/admin/choice/choice" method="post">
+            <div class="form-group has-success">
+                <label class="control-label" for="inputSuccess1">请输入学生名字</label>
+                <input type="text" class="form-control" id="inputSuccess1" name="name" value="<?php echo $arr1['name']; ?>">
+                <?php }
+?>
+            </div>
+            <div class="has-success">
+                <div class="checkbox">
+                    <?php foreach ($course as $arr) {
+    ?>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="inlineCheckbox1" name="arr[]" value="<?php echo $arr['courseNo']; ?>"> <?php echo $arr['name']; ?>
+                    </label>
+                    <?php }
+?>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Choice</button>
+        </form>
+    </div>
+</div>
+<?php $this->partial('common/footer');?>

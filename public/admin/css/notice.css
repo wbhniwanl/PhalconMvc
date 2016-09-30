@@ -1,0 +1,36 @@
+/*
+ * 功能：通知公告、通知公告详情页
+ * 时间：2015-09-08
+ * 作者：GuoShuoHui
+ * 联系：2604637615
+ *  
+ */
+
+
+/* 列表页 */
+.notice { padding: 24px; }
+.notice-list { padding: 24px 0 0; }
+.notice-list table { width: 100%; margin-bottom: 16px; }
+.notice-list thead { background: #f8f9fb; line-height: 30px; color: #787878; font-size: 13px; }
+.notice-list thead th { font-weight: bold; }
+.notice-list tbody tr { cursor: pointer; }
+.notice-list tbody tr:hover { background: #f8f9fb; }
+.notice-list td { border-bottom: 1px solid #f8f9fb; }
+.notice-list .num { width: 80px; text-align: center; }
+.notice-list .title { width: 200px; padding-left: 30px; padding-right: 30px; }
+.notice-list td.title { color: #29a2da; }
+.notice-list td.read { color: #2f2f2f; }
+.notice-list .time { width: 138px; padding-left: 40px; padding-right: 40px; }
+.notice-list .author { width: 144px; text-align: center; }
+.notice-list .cont { padding-left: 24px; padding-right: 24px; }
+
+/* 详情页 */
+.notice-details { padding-bottom: 30px; }
+.notice-details .title { text-align: center; padding: 18px 0; border-bottom: 1px solid #f8f9fb; }
+.notice-details .title h1 { font-size: 18px; margin-bottom: 4px; }
+.notice-details .title ul { color: #787878; }
+.notice-details .title li { display: inline-block; zoom: 1; *display: inline; margin: 0 12px; }
+.notice-details .cont { padding: 24px 24px 50px; }
+.notice-details .back { margin-right: 24px; float: right; }
+strong, th { font-weight: bold; }
+em, i { font-style: italic; }

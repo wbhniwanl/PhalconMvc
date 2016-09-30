@@ -1,0 +1,100 @@
+<?php $this->partial('common/top');?>
+    <div class="header bb">
+        <!-- 导航栏 -->
+        <div class="menu" id="J-menu">
+            <!-- 顶栏 -->
+            <div class="wrapper clearfix">
+                <a href="/admin/student/index" class="logo fl">
+                    <img src="/admin/images/logo-new.png" alt="logo">
+                    <span style="color: #29a2da;font-weight: 900;">学生管理系统</span>
+                </a>
+                <ol class="clearfix fl" id="J-menu-item">
+                    <li class="active" data-index="3">
+                        <a href="/admin/student/index" class="first" >学生列表<i class="icon-css icon-css-tb"></i></a>
+                        <!--<i class="icon icon-submenu submenu3"></i>-->
+                        <div>
+                            <a href="">信息院</a>
+                            <a href="">化院</a>
+                            <a href="">物电学院</a>
+                            <a href="">外国语学院</a>
+                            <a href="">文学院</a>
+                            <a href="">体育学院</a>
+                            <a href="">经济学院</a>
+                        </div>
+                    </li>
+                    <li data-index="2">
+                        <a href="/admin/course/index" class="first">课程列表<i class="icon-css icon-css-tb"></i></a>
+                        <!--<i class="icon icon-submenu submenu2"></i>-->
+                        <div>
+                            <a href="http://help-t.yaochufa.com/ycfad2014/document/index">专业课</a>
+                            <a href="http://help-t.yaochufa.com/ycfad2014/document/category">选修课</a>
+                        </div>
+                    </li>
+                    <li data-index="2">
+                        <a href="/admin/choice/index" class="first">选课列表<i class="icon-css icon-css-tb"></i></a>
+                        <!--<i class="icon icon-submenu submenu2"></i>-->
+                        <div>
+                            <a href="http://help-t.yaochufa.com/ycfad2014/user/userinfo">专业课</a>
+                            <a href="http://help-t.yaochufa.com/ycfad2014/ordermanger/myorder">选修课</a>
+                        </div>
+                    </li>
+
+                </ol>
+                <!--                <a href="--><!--" class="icon icon-notice-bell">-->
+
+            </div>
+        </div>
+    </div>
+<!-- 主体 -->
+<div class="container">
+    <div class="wrapper">
+        <!-- 小面包屑导航 -->
+        <!-- 小面包屑导航 -->
+        <!-- 主内容 -->
+        <div class="cloum mb0 notice">
+            <div class="notice-list" id="J-notice-list">
+                <form action="/admin/student/delect" method="post">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="dealPerson">学生姓名</th>
+                        <th class="dealPerson">课程名</th>
+                        <th class="dealType">添加时间</th>
+                        <th class="operate">选课操作</th>
+                        <th class="operate">更新操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--合并页面-->
+                    <?php foreach ($date as $arr) {?>
+                    <tr data-link="">
+                        <td class="id"><?php echo $arr['name']; ?></td>
+                        <td class="id"><?php echo $arr['courseName']; ?></td>
+                        <td class="dealType">
+                            <?php echo date("Y-m-d", $arr['time']); ?>
+                        </td>
+                        <td class="operate"> <a href="/admin/choice/choice?id=<?php echo $arr['id']; ?>">选课</a></td>
+                        <td class="operate"> <a href="/admin/detail/index">更新</a></td>
+                    </tr>
+                    <?php }
+?>
+                    <td ><input value="提 交" class="btn" type="submit"></td>
+                    </tbody>
+                    <tfoot>
+                    <tr class="noborder form-inline">
+                        <td colspan="11" class="left first">
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+                </form>
+                <div class="pagination ovh">
+                    <div class="ovh">
+                        <?php echo $page; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $this->partial('common/footer');?>
